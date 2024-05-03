@@ -23,9 +23,9 @@
         {
             "label": "RunCMake",
             "type": "shell",
-            "command": "cmake",
+            "command": "./run_cmake.sh",
             "args": [
-                "-B ${workspaceFolder}/build"
+                "${workspaceFolder}/build"
             ],
             "group": {
                 "kind": "build",
