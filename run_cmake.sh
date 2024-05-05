@@ -32,17 +32,23 @@ then
     
     BUILD_TESTS_OPTION="buildAppAndTests"
     BUILD_APP_OPTION="buildApp"
+    #CMake toolchain file path can change
+    #Debug build type:
+    CMAKE_TOOLCHAIN_FILE="./build/build/Debug/generators/conan_toolchain.cmake"
+    BUILD_TYPE="Debug"
+    #Common CMake args
+    CMAKE_ARGS="-B $BUILD_DIR_ARG -DCMAKE_TOOLCHAIN_FILE=$CMAKE_TOOLCHAIN_FILE -DCMAKE_BUILD_TYPE=$BUILD_TYPE"
 
     if [ $BUILD_TARGET_ARG = $BUILD_APP_OPTION ]
     then
-        cmake . -B $BUILD_DIR_ARG -DBUILD_TESTS=OFF
+        cmake . $CMAKE_ARGS -DBUILD_TESTS=OFF
     elif [ $BUILD_TARGET_ARG = $BUILD_TESTS_OPTION ]
     then
-        cmake . -B $BUILD_DIR_ARG -DBUILD_TESTS=ON
+        cmake . $CMAKE_ARGS -DBUILD_TESTS=ON
     else
         echo 'Could not determine if should be build with test or not'
         echo 'Building with cached configuration'
-        cmake . -B $BUILD_DIR_ARG
+        cmake . $CMAKE_ARGS
     fi
 else
     echo 'CMakeLists.txt not changed'
