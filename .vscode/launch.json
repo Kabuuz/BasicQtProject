@@ -19,7 +19,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "BuildCMake"
+            "preLaunchTask": "BuildCMakeForApp"
         },
         {
             "name": "LaunchApp",
@@ -31,7 +31,7 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "BuildCMake"
+            "preLaunchTask": "BuildCMakeForApp"
         },
         {
             "name": "DebugTests",
@@ -51,7 +51,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "BuildCMake"
+            "preLaunchTask": "BuildCMakeForTests"
         },
         {
             "name": "LaunchTests",
@@ -63,7 +63,7 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "BuildCMake"
+            "preLaunchTask": "BuildCMakeForTests"
         }
     ]
 }

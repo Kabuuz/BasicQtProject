@@ -6,5 +6,11 @@ project(BasicQtProject VERSION 1.0)
 
 set(PROJECT_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+set(BUILD_TESTS OFF CACHE BOOL "Defines if tests should be built")
+
 add_subdirectory(src)
-add_subdirectory(test)
+
+if(BUILD_TESTS)
+    message(STATUS "Building tests")
+    add_subdirectory(test)
+endif()

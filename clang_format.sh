@@ -10,7 +10,7 @@ if [ -d "./.git" ] ; then
     git_status=$(git status --porcelain)
 
     while IFS= read -r line; do
-        filename=$(echo "$line" | cut -d' ' -f2-)
+        filename=$(echo "$line" | awk '{printf $2}')
         format_file $filename
     done <<< "$git_status"
 else

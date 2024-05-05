@@ -25,7 +25,8 @@
             "type": "shell",
             "command": "./run_cmake.sh",
             "args": [
-                "${workspaceFolder}/build"
+                "${workspaceFolder}/build",
+                "buildApp"
             ],
             "group": {
                 "kind": "build",
@@ -34,7 +35,21 @@
             "dependsOn": "PrebuildTask"
         },
         {
-            "label": "BuildCMake",
+            "label": "RunCMakeWithTests",
+            "type": "shell",
+            "command": "./run_cmake.sh",
+            "args": [
+                "${workspaceFolder}/build",
+                "buildAppAndTests"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "PrebuildTask"
+        },
+        {
+            "label": "BuildCMakeForApp",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -43,6 +58,17 @@
             ],
             "group": "build",
             "dependsOn": "RunCMake"
+        },
+        {
+            "label": "BuildCMakeForTests",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build"
+            ],
+            "group": "build",
+            "dependsOn": "RunCMakeWithTests"
         }
     ]
 }
